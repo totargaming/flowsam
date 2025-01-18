@@ -3,7 +3,7 @@ import glob as gb
 
 
 
-data_path = '/path/to/dataset/'
+data_path = '../framesList'
 rgb_path = data_path + '/JPEGImages'  
 # '/JPEGImages/480p' for DAVIS-related datasets and '/JPEGImages' for others
 
