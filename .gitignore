@@ -1,6 +1,6 @@
 .venv/
 **/__pycache__/
 checkpoints/
-# the frameList should be in the same directory as evaluation
+# the frameList should be in the same directory as evaluation, btw framesList/JPEGImages/480p/[objectname] is the folder contain all the frames
 framesList/
 nonhung2/
