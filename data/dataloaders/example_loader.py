@@ -11,8 +11,6 @@ from segment_anything.utils.amg import build_all_layer_point_grids
 
 from ..dataset_utils import readRGB, processMultiSeg, preprocess
 
-
-
 class Example_eval_dataset(Dataset):
     def __init__(
         self, 
@@ -37,13 +35,14 @@ class Example_eval_dataset(Dataset):
         self.flow_paths = []
 
         for idx, seq in enumerate(sorted(self.seqs)):
-            if idx % 100 == 0:  print("Loading validation sequence: {}".format(idx))
+            if idx % 100 == 0:  
+                print("Loading validation sequence: {}".format(idx))
             seq_dir = os.path.join(self.rgb_dir, seq)
             for filename in sorted(os.listdir(seq_dir)):
                 if ".jpg" not in filename:
                     continue
                 flow_path = os.path.join(seq_dir.replace(self.rgb_dir, self.flow_dir), filename.replace(".jpg", ".png"))
-                rgb_path = os.path.join(seq_dir.replace(self.rgb_dir, self.rgb_dir), filename.replace(".png", ".jpg"))
+                rgb_path = os.path.join(seq_dir, filename)
                 self.flow_paths.append(flow_path)
                 self.rgb_paths.append(rgb_path)
 
@@ -98,5 +97,3 @@ class Example_eval_dataset(Dataset):
        
     def __getitem__(self, idx):
         return self.val_loading(idx)
-      
- 

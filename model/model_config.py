@@ -20,7 +20,7 @@ def config_model(args):
         '''
         mask_decoder = flowp_sam_model_registry[args.rgb_encoder](checkpoint=args.rgb_encoder_ckpt_path).mask_decoder
         if args.ckpt_path is not None:
-            mask_decoder_ckpt = torch.load(args.ckpt_path)['model_state_dict']
+            mask_decoder_ckpt = torch.load(args.ckpt_path, weights_only=True)['model_state_dict']
             mask_decoder.load_state_dict(mask_decoder_ckpt)
         flowsam = FlowPSAM(rgb_encoder=rgb_image_encoder, flow_encoder=flow_image_encoder, 
                             mask_decoder=mask_decoder, prompt_encoder=prompt_encoder).to(device = "cuda")

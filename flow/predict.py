@@ -87,7 +87,7 @@ class ImgPair(Dataset):
 
 def predict_batch(args):
     model = torch.nn.DataParallel(RAFT(args))
-    model.load_state_dict(torch.load(args.model))
+    model.load_state_dict(torch.load(args.model, weights_only=True))
     model = model.module
 
     model.to(DEVICE)
